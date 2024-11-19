@@ -1,0 +1,15 @@
+[Unit]
+Description=Distributed LLM Node Service
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/llm_cluster/src
+Environment=PATH=/home/pi/llm_env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=/home/pi/llm_env/bin/python distributed_llm.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
